@@ -63,5 +63,5 @@ def create_menu():
 
         flash("Menu created successfully!", "success")
         return redirect(url_for("admin.create_menu"))
-    return render_template("admin/create_menu.html",  title="Create Menu Item")
+    return render_template("administrate/create_menu.html",  title="Create Menu Item")
 
