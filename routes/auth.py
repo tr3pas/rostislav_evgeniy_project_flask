@@ -25,7 +25,7 @@ def register():
             session.commit()
 
         flash("Registration successful")
-        return redirect(url_for("login"))
+        return redirect(url_for("auth.login"))
     return render_template("auth/register.html")
 
 

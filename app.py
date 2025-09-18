@@ -1,9 +1,9 @@
 from flask import Flask,  render_template
 
-from settings import DatabaseConfig, Session
+from settings import DatabaseConfig
 from flask_login import LoginManager
 from models import User
-from routes import auth
+from routes import auth, admin_panel, errors, menu
 from flask_wtf.csrf import CSRFProtect
 
 
@@ -28,7 +28,12 @@ def load_user(user_id):
 def index():
     return render_template("index.html")
 
+
+app.register_blueprint(menu.bp, url_prefix="/")
 app.register_blueprint(auth.bp, url_prefix="/auth")
+app.register_blueprint(admin_panel.bp, url_prefix="/admin")
+app.register_blueprint(errors.bp, url_prefix="/error")
+
 
 if __name__ == "__main__":
     print(app.url_map)
