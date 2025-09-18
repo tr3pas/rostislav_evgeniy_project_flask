@@ -28,7 +28,7 @@ def admin_required(func):
 @bp.route("/")
 @admin_required
 def admin_panel():
-    return render_template("admin/admin_panel.html", title="Admin Panel")
+    return render_template("administrate/admin_panel.html", title="Admin Panel")
 
 
 @bp.route("/create_menu", methods=["GET", "POST"])
