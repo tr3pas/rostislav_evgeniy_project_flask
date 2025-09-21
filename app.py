@@ -14,7 +14,7 @@ login_manager = LoginManager()
 login_manager.login_view = "login" # type: ignore
 login_manager.init_app(app)
 
-# csrf = CSRFProtect(app)
+csrf = CSRFProtect(app)
 
 
 @login_manager.user_loader

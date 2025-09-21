@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block title %}403{% endblock title %}
+
+{% block content %}
+<main class="card" role="main" aria-labelledby="title">
+    <div class="left" aria-hidden="true">
+      <div class="badge">
+        <!-- SVG із ключем -->
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="24" cy="32" r="10" stroke="rgba(2,132,199,0.9)" stroke-width="3" fill="rgba(2,132,199,0.1)"/>
+          <path d="M24 32h20l4 4-4 4H24" stroke="rgba(2,132,199,0.9)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="content">
+      <h1 id="title">401 — Неавторизований</h1>
+      <p class="lead">Ви не авторизовані для перегляду цієї сторінки. Будь ласка, увійдіть або зареєструйтеся.</p>
+
+      <div class="meta">
+        <div class="code">Код: 401</div>
+      </div>
+
+      <div class="actions" role="group" aria-label="Дії">
+        <a class="btn btn-primary" href="/login">Увійти</a>
+        <a class="btn btn-secondary" href="/register">Зареєструватися</a>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

@@ -1,0 +1,137 @@
+:root{
+  --aero-bg: radial-gradient(1200px 800px at 10% 10%, #9ee7ff 0%, #76c9ff 25%, #6ee7b7 55%, #28d8ff 75%, #6aa8ff 100%);
+  --aero-glass: linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.78) 100%);
+  --aero-stroke: rgba(255,255,255,.55);
+  --aero-text: #0f2b3a;
+  --aero-muted: #1e566a;
+  --aero-btn: linear-gradient(180deg, #ffffff 0%, #d9f7ff 12%, #9ae8ff 50%, #3fc9ff 50.5%, #1fb1ff 78%, #0fa3ff 100%);
+  --aero-btn-gloss: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.35) 46%, rgba(255,255,255,0) 46.5%);
+  --aero-input: linear-gradient(180deg, #ffffff 0%, #f4fdff 40%, #e8fbff 100%);
+  --aero-ring: 0 0 0 6px rgba(23,178,255,.15), 0 12px 30px rgba(23,178,255,.25);
+}
+
+/* Background + floating orbs */
+html,body{min-height:100%}
+body{
+  background: var(--aero-bg), #87d9ff fixed;
+  background-attachment: fixed;
+  color: var(--aero-text);
+  font-family: "Segoe UI","Helvetica Neue",Arial,system-ui,-apple-system,"Frutiger",sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+body::before, body::after{
+  content:""; position: fixed; inset: -15vmax auto auto -15vmax;
+  width: 60vmax; height: 60vmax; border-radius:50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.9) 0%, rgba(255,255,255,.2) 35%, rgba(255,255,255,0) 60%);
+  filter: blur(20px); opacity:.7; pointer-events:none; z-index:-1;
+  animation: aero-float 14s ease-in-out infinite;
+}
+body::after{
+  left:auto; right:-18vmax; top:20vh; width:45vmax; height:45vmax; opacity:.6; animation-delay:-4s;
+}
+@keyframes aero-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5vh)}}
+
+/* Container card feel for the form area */
+h1{
+  color: var(--aero-muted);
+  text-shadow: 0 1px 0 rgba(255,255,255,.85);
+  margin-bottom: 1rem;
+}
+
+/* Bootstrap overrides (no HTML changes) */
+.mb-3 .form-label{
+  color: #1d4b58;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+.form-control{
+  background: var(--aero-input);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 6px 18px rgba(0,70,120,.08);
+  transition: .2s ease;
+}
+.form-control:focus{
+  border-color: rgba(23,178,255,.6);
+  box-shadow: var(--aero-ring), inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+/* Form wrapper look (automatic using nearest parent block) */
+form{
+  background: var(--aero-glass);
+  border: 1px solid var(--aero-stroke);
+  border-radius: 22px;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 20px 60px rgba(0,55,100,.25), inset 0 1px 0 rgba(255,255,255,.5);
+  padding: 18px;
+}
+
+/* Button: glossy aero */
+.btn.btn-primary{
+  border: 0;
+  color: #063a4a;
+  background: var(--aero-btn);
+  border-radius: 999px;
+  padding: 12px 18px;
+  box-shadow: 0 14px 28px rgba(0,136,230,.35), inset 0 1px 0 rgba(255,255,255,.85);
+  position: relative;
+  transition: transform .08s ease, filter .2s ease, box-shadow .2s ease;
+}
+.btn.btn-primary::after{
+  content:""; position:absolute; inset:0; border-radius:999px; background: var(--aero-btn-gloss); pointer-events:none;
+}
+.btn.btn-primary:hover{filter: saturate(1.1) brightness(1.02)}
+.btn.btn-primary:active{transform: translateY(1px) scale(.995)}
+
+/* Link style */
+a{
+  color:#0c90ff;
+  font-weight:600;
+  text-decoration: none;
+  position: relative;
+}
+a:hover{ text-decoration: underline }
+
+/* Spacing helpers if Bootstrap not present */
+.mb-3{ margin-bottom: 1rem }
+
+@keyframes aero-pulse {
+  0%,100% {
+    box-shadow: 0 14px 28px rgba(0,136,230,.35), inset 0 1px 0 rgba(255,255,255,.85);
+    filter: saturate(1) brightness(1);
+  }
+  50% {
+    box-shadow: 0 18px 36px rgba(0,136,230,.48), inset 0 1px 0 rgba(255,255,255,.95);
+    filter: saturate(1.06) brightness(1.05);
+  }
+}
+
+@keyframes aero-sheen {
+  0%   { left: -160%; }
+  100% { left: 220%; }
+}
+
+.btn.btn-primary{
+  overflow: hidden;                 
+  animation: aero-pulse 2.6s ease-in-out infinite;
+}
+
+.btn.btn-primary::before{
+  content:"";
+  position:absolute; top:0; left:-160%;
+  width:55%; height:100%;
+  background: linear-gradient(75deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.55) 46%,
+    rgba(255,255,255,0) 72%);
+  transform: skewX(-24deg);
+  pointer-events:none;
+  opacity:.85;
+}
+
+.btn.btn-primary:hover::before{ animation: aero-sheen 1.2s ease; }
+.btn.btn-primary:hover{ animation-duration: 2s; }
