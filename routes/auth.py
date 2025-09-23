@@ -9,6 +9,9 @@ from flask import Blueprint
 
 bp = Blueprint('auth', __name__)
 
+def validate_password(password):
+    if len(password) >= 8:
+        return True
 
 @bp.route("/register", methods=["GET", "POST"])
 def register():
@@ -18,14 +21,16 @@ def register():
         password = request.form.get("password")
 
         hashed_password = generate_password_hash(password) # type: ignore
+        if validate_password(password):
+            user = User(username=username, email=email, hash_password=hashed_password)
+            with Session() as session:
+                session.add(user)
+                session.commit()
 
-        user = User(username=username, email=email, hash_password=hashed_password)
-        with Session() as session:
-            session.add(user)
-            session.commit()
-
-        flash("Registration successful")
-        return redirect(url_for("auth.login"))
+                flash("Registration successful")
+                return redirect(url_for("auth.login"))
+        else:
+            flash("Registration failed, your password have to have 8 symbols or more")
     return render_template("auth/register.html")
 
 
