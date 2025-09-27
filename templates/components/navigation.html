@@ -1,0 +1,24 @@
+
+
+<header class="aero-header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                ✨ Aero App
+            </a>
+            
+            <nav>
+		<a class="nav-link" href="{{ url_for('menu.list_menu_items') }}">Menu</a>
+		{% if current_user.is_authenticated %}
+			{% if current_user.is_admin %}
+			<a class="nav-link" href="{{ url_for('admin.admin_panel') }}">Admin Panel</a>
+			{% endif %}
+            <a class="nav-link" href="{{ url_for('orders.create_order') }}">Basket</a>
+            <a class="nav-link" href="{{ url_for('orders.order_history') }}">History Orders</a>
+		<a class="nav-link" href="{{ url_for('auth.logout') }}">Logout ({{ current_user.username }})</a>
+		{% else %}
+                <a href="{{ url_for('auth.register') }}" class="nav-link">Register</a>
+                <a href="{{ url_for('auth.login') }}" class="nav-link">Login</a>
+		{% endif %}
+            </nav>
+        </div>
+    </header>

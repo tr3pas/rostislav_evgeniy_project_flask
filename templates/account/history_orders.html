@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+
+    <h1>Історія замовлень</h1>
+    {% for order  in  orders%}
+        <p>{{order}}</p>
+        <a href="{{ url_for('orders.order_details',order_id = order.id)}}">Детальніше</a>
+    {% endfor %}
+
+{% endblock content %}

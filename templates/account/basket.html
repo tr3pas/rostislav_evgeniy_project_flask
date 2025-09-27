@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+
+    <h1>Your Basket</h1>
+    {% if not basket %}
+        <p>Your basket is empty.</p>
+    {% else %}
+        <ul>
+            {% for item, quantity in basket.items() %}
+                <li>{{ item }} - Quantity: {{ quantity }}</li>
+            {% endfor %}
+        </ul>
+        <form method="post" action="{{ url_for('orders.create_order') }}">
+            <button type="submit">оформити замовлення</button>
+        </form>
+
+        <form method="post" action="{{ url_for('orders.clear_basket') }}">
+            <button type="submit">Очистити кошик</button>
+        </form>
+    {% endif %}
+
+
+{% endblock content %}

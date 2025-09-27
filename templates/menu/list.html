@@ -2,9 +2,18 @@
 
 
 {% block title %}{{ title }}{% endblock title %}
-
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/list_menu.css') }}">{% endblock styles %}
 {% block content %}
 
-    <h1>Welcome to the Shoe Shop</h1>
-
+<h1>MENU ITEMS</h1>
+    <div class="container-menu-card">
+        {% for item in menu_items %}
+        <div class="menu-item-card">
+            <img class= "menu-item-card-image",src="{{ item['image_path'] }}" alt="{{ item['name'] }}">
+            <h2>{{ item['name'] }}</h2>
+            <p>Price: ${{ item['price'] }}</p>
+            <a class = "menu-item-card-link", href="{{ url_for('menu.details_menu_item', item_id=item['id']) }}">Детальніше про {{ item['name'] }}</a>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+
+    <h1>ваше замовлення №{{ order.id }}</h1>
+    <ul>
+        {% for item in order.order_items %}
+            <li>{{ item.menu.name }} - Кількість: {{ item.quantity }}</li>
+            <a href = "{{url_for('menu.details_menu_item', item_id=item.menu.id)}}"> переглянути позицію </a>
+        {% endfor %}
+    </ul>
+
+    <p>Статус замовлення: {{ order.status }}</p>
+    <p>Дата створення: {{ order.created_at }}</p>
+    <p><strong>Загальна вартість: {{ total_price }}</strong></p>
+
+    <form method="post" action="{{ url_for('orders.delete_order', order_id=order.id) }}">
+        <button type="submit">видалити замовлення</button>
+    </form>
+
+
+{% endblock content %}

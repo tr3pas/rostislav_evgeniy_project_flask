@@ -31,8 +31,47 @@ def init_db():
         active=True
         )
 
+    m2 = Menu(
+        name="Філадельфія класична",
+        price=220.00,
+        rating=5,
+        description="8 шт., лосось, крем-сир, огірок, рис, норі",
+        image_path=None,
+        category="Роли",
+        active=True
+    )
 
-    session.add_all([user, user2, m1])  
+    m3 = Menu(
+        name="Каліфорнія з креветкою",
+        price=235.00,
+        rating=4,
+        description="8 шт., креветка, авокадо, огірок, ікра масаго",
+        image_path=None,
+        category="Роли",
+        active=True
+    )
+
+    m4 = Menu(
+        name="Місо суп",
+        price=95.00,
+        rating=4,
+        description="Бульйон місо, тофу, вакаме, зелена цибуля",
+        image_path=None,
+        category="Супи",
+        active=True
+    )
+
+    m5 = Menu(
+        name="Сет асорті",
+        price=599.00,
+        rating=5,
+        description="30 шт., мікс популярних ролів",
+        image_path=None,
+        category="Сети",
+        active=True
+    )
+
+    session.add_all([user, user2, m1, m2, m3, m4, m5])
     session.commit()
 
     session.close()

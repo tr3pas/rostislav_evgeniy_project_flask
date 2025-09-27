@@ -18,7 +18,7 @@ class DatabaseConfig:
     SECRET_KEY = os.getenv("SECRET_KEY")
 
     IMAGES_DIR = "static/images_menu"
-
+    WTF_CSRF_ENABLED = True
 
     def uri_postgres(self):
         return f"postgresql+psycopg2://{self.DB_USER}:{self.DB_PASSWORD}@localhost:5432/{self.DATABASE_NAME}"

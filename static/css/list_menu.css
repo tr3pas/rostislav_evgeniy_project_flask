@@ -1,0 +1,58 @@
+body {
+    background-color: aqua;
+
+}
+
+.container-menu-card {
+    display: flex;
+    flex-wrap: wrap;   /* щоб переносились вниз */
+    gap: 20px;         /* відстань між карточками */
+    justify-content: flex-start;
+}
+.menu-item-card {
+    background-color: aliceblue;
+    width: 200px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 10px 20px 40px gray;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 20px;
+    
+
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 15px; 
+
+}
+.menu-item-card-image {
+    border-radius: 11px;
+
+    
+}
+
+.menu-item-card-link-keeper {
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.menu-item-card-link {
+    background-color: blue;
+    padding: 7px 12px;
+    color: white;
+    border-radius: 20px;
+
+}

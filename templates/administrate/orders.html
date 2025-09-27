@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+<h1 class="mb-4">Всі замовлення</h1>
+
+{% if orders_results %}
+<div class="table-responsive">
+    <table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+        <th>ID</th> <th>Користувач</th> <th>Email</th> <th>Деталі замовлення</th> <th>Час замовлення</th> <th>Статус</th> <th>Дія</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for order, user in orders_results %}
+    <tr>
+        <td>{{ order.id }}</td> <td>{{ user.username }}</td> <td>{{ user.email }}</td> <td>{{ order.order_items }}</td> <td>{{ order.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
+        <td>
+            {% if order.status == 'active' %}
+                <span class="badge bg-warning">Активный</span>
+            {% elif order.status == 'completed' %}
+                <span class="badge bg-success">Виконано</span>
+            {% else %}
+                <span class="badge bg-secondary">{{ order.status }}</span>
+            {% endif %}
+        </td>
+        <td>
+            {% if order.status == 'active' %}
+            <form method="POST" style="display: inline;">
+                
+                <input type="hidden" name="order_id" value="{{ order.id }}">
+                <button type="submit" class="btn btn-success btn-sm"> Заказ выполнен </button>
+            </form>
+            {% else %}
+            <button class="btn btn-secondary btn-sm" disabled>Виконано </button>
+            {% endif %}
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        Замовлень не найдено.
+    </div>
+{% endif %}
+</div>
+
+{% endblock %}

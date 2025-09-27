@@ -1,6 +1,95 @@
+/* Основные стили страницы и эффекты */
+:root {
+    /* Эти переменные больше не используются, но могут остаться в вашем файле */
+    --aero-bg: radial-gradient(1200px 800px at 10% 10%, #9ee7ff 0%, #76c9ff 25%, #6ee7b7 55%, #28d8ff 75%, #6aa8ff 100%);
+    --aero-glass: linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.78) 100%);
+    --aero-stroke: rgba(255,255,255,.55);
+    --aero-text: #0f2b3a;
+    --aero-muted: #1e566a;
+    --aero-btn: linear-gradient(180deg, #ffffff 0%, #d9f7ff 12%, #9ae8ff 50%, #3fc9ff 50.5%, #1fb1ff 78%, #0fa3ff 100%);
+    --aero-btn-gloss: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.35) 46%, rgba(255,255,255,0) 46.5%);
+    --aero-input: linear-gradient(180deg, #ffffff 0%, #f4fdff 40%, #e8fbff 100%);
+    --aero-ring: 0 0 0 6px rgba(23,178,255,.15), 0 12px 30px rgba(23,178,255,.25);
+}
+
+/* Background + orbs */
+html,body {
+    min-height: 100%;
+}
 body {
-      background-image: url("/static/images/background.jpg");
-      background-size: cover; /* или contain / auto */
-      background-repeat: no-repeat;
-      background-position: center;
-    }
+    background: radial-gradient(1200px 800px at 10% 10%, #9ee7ff 0%, #76c9ff 25%, #6ee7b7 55%, #28d8ff 75%, #6aa8ff 100%), #87d9ff fixed;
+    background-attachment: fixed;
+    color: #0f2b3a; /* Заменено --aero-text */
+    font-family: "Segoe UI","Helvetica Neue",Arial,system-ui,-apple-system,"Frutiger",sans-serif;
+    position: relative; 
+    overflow-x: hidden;
+}
+body::before, body::after {
+    content: ""; 
+    position: fixed; 
+    inset: -15vmax auto auto -15vmax;
+    width: 60vmax; 
+    height: 60vmax; 
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.9) 0%, rgba(255,255,255,.2) 35%, rgba(255,255,255,0) 60%);
+    filter: blur(20px); 
+    opacity: .7; 
+    pointer-events: none; 
+    z-index: -1;
+    animation: aero-float 14s ease-in-out infinite;
+}
+body::after { 
+    left: auto; 
+    right: -18vmax; 
+    top: 20vh; 
+    width: 45vmax; 
+    height: 45vmax; 
+    opacity: .6; 
+    animation-delay: -4s; 
+}
+@keyframes aero-float { 
+    0%,100% { transform: translateY(0) } 
+    50% { transform: translateY(-2.5vh) } 
+}
+
+/* Headline */
+h1 {
+    color: #1e566a; /* Заменено --aero-muted */
+    text-shadow: 0 1px 0 rgba(255,255,255,.85);
+}
+/* --- Стили для Aero Glass Header --- */
+.aero-header {
+    background: linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.78) 100%); /* Заменено --aero-glass */
+    border: 1px solid rgba(255,255,255,.55); /* Заменено --aero-stroke */
+    border-radius: 0 0 18px 18px;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 10px 30px rgba(0, 55, 100, .15), inset 0 1px 0 rgba(255, 255, 255, .5);
+    padding: 12px 20px;
+    
+    width: 98%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.aero-header .navbar-brand {
+    color: #0f2b3a; /* Заменено --aero-text */
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 1px 0 rgba(255,255,255,.85);
+    text-decoration: none;
+}
+
+.aero-header a.nav-link {
+    color: #1e566a; /* Заменено --aero-muted */
+    font-weight: 600; 
+    text-decoration: none;
+    transition: color .2s ease, text-decoration .2s ease;
+    margin-left: 15px;
+}
+
+.aero-header a.nav-link:hover {
+    color: #0c90ff;
+    text-decoration: underline;
+}
