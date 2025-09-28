@@ -93,3 +93,32 @@ h1 {
     color: #0c90ff;
     text-decoration: underline;
 }
+
+footer {
+    /* Стили для Aero Glass Footer, похожие на header */
+    background: linear-gradient(180deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,.75) 100%); /* Немного менее прозрачный, чем header */
+    border: 1px solid rgba(255,255,255,.55); /* Граница */
+    border-radius: 18px 18px 0 0; /* Скругление только сверху */
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    box-shadow: 0 -5px 20px rgba(0, 55, 100, .1), inset 0 1px 0 rgba(255, 255, 255, .5);
+    
+    /* Расположение и типографика */
+    padding: 15px 20px;
+    margin-top: 50px; /* Отступ от основного контента */
+    text-align: center;
+    color: #1e566a; /* Используем более приглушенный цвет текста, как для h1 и ссылок */
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-shadow: 0 1px 0 rgba(255,255,255,.85);
+    
+    /* Закрепление внизу (опционально, если футер должен быть всегда виден внизу) */
+
+    width: 98%; 
+    /* position: fixed; 
+    bottom: 0;
+    right: 0;
+    width: 98%;
+    z-index: 999; */
+    
+}

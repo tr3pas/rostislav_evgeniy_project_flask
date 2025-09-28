@@ -1,0 +1,30 @@
+table {
+    width: 90%;
+    margin: 30px;
+    border-collapse: collapse;
+    /* Ефект Aero Glass для всієї таблиці */
+    background: linear-gradient(180deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,.75) 100%);
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 55, 100, .15);
+    backdrop-filter: blur(8px);
+    overflow: hidden; /* Важливо для відображення скруглених кутів */
+}
+
+th, td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, .1); /* Легкий розділювач */
+    color: #0f2b3a;
+}
+
+th {
+    background: rgba(255, 255, 255, .85); /* Шапка трохи світліша */
+    font-weight: 700;
+    color: #1e566a; 
+    text-shadow: 0 1px 0 rgba(255,255,255,.85);
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, .8); /* Легкий ефект при наведенні на рядок */
+}

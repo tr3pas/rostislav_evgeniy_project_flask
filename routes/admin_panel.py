@@ -41,7 +41,7 @@ def admin_panel():
                 session.delete(menu_pos)
 
             elif "change_position" in request.form and menu_pos:
-                redirect(url_for("admin.update_menu", pos_id=pos_id))
+                redirect(url_for("admin.update_menu.<int:pos_id>", pos_id=pos_id))
 
             session.commit()
 
@@ -117,3 +117,26 @@ def all_orders():
         orders_results = cursor.execute(stmt).fetchall()
 
     return render_template("administrate/orders.html", orders_results=orders_results)
+
+
+@bp.route("/users_control", methods=["GET", "POST"])
+@admin_required
+def users_control():
+    if request.method == "POST":
+        pos_id = request.form.get("pos_id")
+        with Session() as session:
+            stmt = select(User).filter_by(id=pos_id)
+            # stmt = select(Menu).where(Menu.id == pos_id)
+            menu_pos = session.scalar(stmt)
+            if "delete_position" in request.form and menu_pos:
+                session.delete(menu_pos)
+
+            session.commit()
+
+    with Session() as session:
+        stmt = select(User)
+        users = session.scalars(stmt).all()
+
+    return render_template(
+        "administrate/users_control.html", title="Users control", all_users=users
+    )

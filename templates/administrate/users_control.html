@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/users_control.css') }}">{% endblock styles %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ім'я користувача</th>
+            <th>Email</th>
+            <th>Пароль (Хеш)</th>
+            <th>Статус</th>
+            <th>Дія</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in all_users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.hash_password | truncate(15, True, '...') }}</td>
+            <td>{{ "Адміністратор" if user.is_admin else "Звичайний користувач" }}</td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    
+                    <button type="submit" name="change_status">Змінити статус</button>
+                    <button type="submit" name="change_position">Змінити</button>
+                    <button type="submit" name="delete_position" class="btn-danger">Видалити</button> 
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
