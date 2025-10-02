@@ -2,7 +2,7 @@
 
 
 {% block title %}{{ title }}{% endblock title %}
-
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/orders.css') }}">{% endblock styles %}
 {% block content %}
 <div class="container-fluid">
 <h1 class="mb-4">Всі замовлення</h1>

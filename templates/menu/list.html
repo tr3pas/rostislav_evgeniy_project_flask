@@ -4,7 +4,7 @@
 {% block title %}{{ title }}{% endblock title %}
 {% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/list_menu.css') }}">{% endblock styles %}
 {% block content %}
-
+<div class="container">
 <h1>MENU ITEMS</h1>
     <div class="container-menu-card">
         {% for item in menu_items %}
@@ -16,4 +16,5 @@
         </div>
         {% endfor %}
     </div>
+</div>
 {% endblock content %}

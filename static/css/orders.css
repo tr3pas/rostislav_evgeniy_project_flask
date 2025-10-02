@@ -28,18 +28,3 @@ th {
 tr:hover {
     background: rgba(255, 255, 255, .8); /* Легкий ефект при наведенні на рядок */
 }
-.btn.btn-primary{
-  border: 0;
-  color: #063a4a;
-  background: var(--aero-btn);
-  border-radius: 999px;
-  padding: 12px 18px;
-  box-shadow: 0 14px 28px rgba(0,136,230,.35), inset 0 1px 0 rgba(255,255,255,.85);
-  position: relative;
-  transition: transform .08s ease, filter .2s ease, box-shadow .2s ease;
-}
-.btn.btn-primary::after{
-  content:""; position:absolute; inset:0; border-radius:999px; background: var(--aero-btn-gloss); pointer-events:none;
-}
-.btn.btn-primary:hover{filter: saturate(1.1) brightness(1.02)}
-.btn.btn-primary:active{transform: translateY(1px) scale(.995)}

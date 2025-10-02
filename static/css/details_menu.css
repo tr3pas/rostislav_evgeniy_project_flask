@@ -1,57 +1,75 @@
 
+/* ================================================= */
+/* Обновленные стили для страницы деталей меню */
+/* ================================================= */
 
-
-
-.menu-item-card-image {
-    border-radius: 11px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-
+/* --- КОНТЕЙНЕР КАРТОЧКИ (Стиль Aero Glass) --- */
 .container-detail-menu {
-    background-color: aliceblue;
-    width: 300px;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 10px 20px 40px gray;
-    margin: auto;
+    /* Стили Aero Glass */
+    background: linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.78) 100%);
+    border: 1px solid rgba(255,255,255,.55);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 20px 60px rgba(0,55,100,.25), inset 0 1px 0 rgba(255,255,255,.5);
+    
+    width: 350px; /* Немного увеличен для лучшего вида */
+    border-radius: 22px; /* Более мягкие углы */
+    padding: 30px; /* Увеличен внутренний отступ */
+    margin: 50px auto; /* Центрирование */
+    
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
+    /* Убираем align-items: center, чтобы текст выравнивался по левому краю */
+    /* align-items: center; */ 
 }
-    
 
+/* --- ЗАГОЛОВОК (Название блюда) --- */
 h1 {
     text-align: center;
-    margin-top: 20px
+    margin-top: 0; /* Убираем лишний margin-top, так как он есть у контейнера */
+    margin-bottom: 25px; /* Добавляем отступ снизу */
+    color: #0f2b3a; /* Основной цвет текста */
+    font-weight: 700; /* Более жирный */
+    text-shadow: 0 1px 0 rgba(255,255,255,.85); /* Стеклянный эффект */
+    font-size: 2rem;
 }
 
+/* --- КОНТЕЙНЕР ИЗОБРАЖЕНИЯ --- */
+.menu-item-card-image {
+    /* Если это контейнер для изображения, убираем ненужные стили */
+    border-radius: 11px;
+    margin: 0 auto 20px auto; /* Центрирование и отступ снизу */
+    /* display, flex, align-items и justify-content здесь, вероятно, не нужны */
+}
+
+/* --- САМО ИЗОБРАЖЕНИЕ --- */
 .detail-menu-description-image {
     border-radius: 11px;
-
-    
+    max-width: 100%; /* Убедимся, что изображение не выходит за пределы карточки */
+    height: auto;
 }
 
-.detail-menu-description {
-    font-size: 14px;
-    margin-top: 20px
-}
-
+/* --- ЦЕНА (Самый важный элемент) --- */
 .detail-menu-price {
-    font-size: 17px;
-    margin-top: 20px
-
+    font-size: 1.6rem; /* Увеличен */
+    font-weight: 700; /* Жирный */
+    color: #0c90ff; /* Акцентный синий цвет */
+    margin-top: 20px;
+    margin-bottom: 5px; /* Меньше отступ до описания */
 }
 
+/* --- КАТЕГОРИЯ --- */
 .detail-menu-category{
-    font-size: 16px;
-    margin-top: 20px
+    font-size: 1rem;
+    color: #1e566a; /* Приглушенный цвет */
+    margin-top: 0; /* Убираем лишний отступ */
+    margin-bottom: 20px;
+}
 
+/* --- ОПИСАНИЕ --- */
+.detail-menu-description {
+    font-size: 1rem;
+    margin-top: 10px; /* Уменьшаем отступ */
+    line-height: 1.6; /* Улучшение читаемости длинного текста */
+    color: #0d232f; /* Улучшенный контраст */
 }

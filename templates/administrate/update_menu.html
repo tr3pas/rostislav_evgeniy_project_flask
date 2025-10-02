@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+
+    <h1>Додаємо нову позицію меню</h1>
+    <div class="contatiner">
+    <form method="post", enctype="multipart/form-data">
+        <input type="hidden" name="menu_id" value="{{ position.id }}">
+       <label for="name">Назва страви</label>
+       <input type="text" id="name" name="name" placeholder="{{ position.name }}" required>
+
+       <label for="description">Опис страви</label>
+       <textarea id="description" name="description" placeholder="Введіть опис страви"></textarea>
+
+       <label for="price">Ціна</label>
+       <input type="number" id="price" name="price" step="0.01" required>
+        
+       <label for="image">Зображення</label>
+       <input type="file" id="image" name="image" accept="image/*">
+
+       <label for="category">Категорія</label>
+       <input type="text" id="category" name="category" placeholder="Введіть категорію страви" required>
+       
+       <button type="submit">Додати страву</button>
+    </form>
+    </div>
+
+{% endblock content %}

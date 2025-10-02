@@ -41,7 +41,7 @@ def admin_panel():
                 session.delete(menu_pos)
 
             elif "change_position" in request.form and menu_pos:
-                redirect(url_for("admin.update_menu.<int:pos_id>", pos_id=pos_id))
+                return redirect(url_for("admin.update_menu", pos_id=pos_id))
 
             session.commit()
 
@@ -89,6 +89,36 @@ def create_menu():
 @bp.route("/update_menu/<int:pos_id>", methods=["GET", "POST"])
 @admin_required
 def update_menu(pos_id):
+    if request.method == "POST":
+        menu_id = request.form.get("meenu_id")
+        name = request.form.get("name")
+        price = request.form.get("price")
+        description = request.form.get("description")
+        category = request.form.get("category")
+        image = request.files.get("image")
+
+        if image:
+            os.makedirs(config.IMAGES_DIR, exist_ok=True)
+            unique_filename = f"{uuid.uuid4().hex}_{image.filename}"
+            image_path = f"{config.IMAGES_DIR}/{unique_filename}"
+            image.save(image_path)
+
+        with Session() as session:
+            stmt = select(Menu).filter_by(id=pos_id)
+            menu_pos = session.scalar(stmt)
+
+            if menu_pos:
+                if name:
+                    menu_pos.name = name
+                if price:
+                    menu_pos.price = float(price)
+                if description:
+                    menu_pos.description = description
+                if category:
+                    menu_pos.category = category
+                    menu_pos.image_path = image_path if image else None
+                
+                session.commit()
     with Session() as session:
         stmt = select(Menu).filter_by(id=pos_id)
         # stmt = select(Menu).where(Menu.id == pos_id)
@@ -123,9 +153,9 @@ def all_orders():
 @admin_required
 def users_control():
     if request.method == "POST":
-        pos_id = request.form.get("pos_id")
+        user_id = request.form.get("user_id")
         with Session() as session:
-            stmt = select(User).filter_by(id=pos_id)
+            stmt = select(User).filter_by(id=user_id)
             # stmt = select(Menu).where(Menu.id == pos_id)
             menu_pos = session.scalar(stmt)
             if "delete_position" in request.form and menu_pos:

@@ -2,7 +2,7 @@
 
 
 {% block title %}{{ title }}{% endblock title %}
-
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/admin_panel.css') }}">{% endblock styles %}
 {% block content %}
     <h1>Адмін-панель</h1>
     <nav>
@@ -27,9 +27,9 @@
             <form method="post">
                 <!-- <input type="hidden" name="csrf_token" value="{#{ csrf_token }#}"> -->
                 <input type="hidden" name="pos_id" value="{{ pos.id }}">
-                <button type="submit" name="change_status">Змінити статус</button>
-                <button type="submit" name="delete_position">Видалити</button>
-                <button type="submit" name="change_position">Змінити</button>
+                <button type="submit" name="change_status" class="btn btn-primary">Змінити статус</button>
+                <button type="submit" name="delete_position" class="btn btn-primary">Видалити</button>
+                <button type="submit" name="change_position" class="btn btn-primary">Змінити</button>
             </form>
         </td>
     </tr>

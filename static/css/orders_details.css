@@ -1,0 +1,97 @@
+/* ================================================= */
+/* СТИЛИ ДЛЯ СТРАНИЦЫ ДЕТАЛЕЙ ЗАКАЗА (Order Details) */
+/* ================================================= */
+
+/* Основной контейнер для центрирования и добавления эффекта Aero Glass */
+.order-details-wrapper {
+    /* Используем стили формы из login.css для карточного эффекта */
+    background: linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.78) 100%); /* var(--aero-glass) */
+    border: 1px solid rgba(255,255,255,.55); /* var(--aero-stroke) */
+    border-radius: 22px;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 20px 60px rgba(0,55,100,.25), inset 0 1px 0 rgba(255,255,255,.5);
+    padding: 30px; /* Увеличим отступ внутри карточки */
+    
+    /* Центрирование карточки на экране */
+    max-width: 600px;
+    margin: 60px auto; /* Отступ сверху/снизу и центрирование */
+}
+
+/* Заголовок заказа */
+.order-details-wrapper h1 {
+    color: #1e566a; /* var(--aero-muted) */
+    text-shadow: 0 1px 0 rgba(255,255,255,.85);
+    margin-bottom: 25px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Список позиций заказа */
+.order-details-wrapper ul {
+    list-style: none; /* Убираем стандартные маркеры */
+    padding-left: 0;
+    margin-bottom: 25px;
+    border-top: 1px dashed rgba(0,0,0,.1);
+    padding-top: 15px;
+}
+.order-details-wrapper li {
+    font-size: 1.1rem;
+    color: #0f2b3a; /* var(--aero-text) */
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ссылка "переглянути позицію" */
+.order-details-wrapper li a {
+    /* Стили ссылки берутся из a{} в login.css, но сделаем их меньше */
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: 15px;
+}
+
+/* Статус, дата и общая стоимость */
+.order-details-wrapper p {
+    font-size: 1.1rem;
+    padding: 5px 0;
+    border-top: 1px dotted rgba(0,0,0,.05);
+}
+.order-details-wrapper p:last-of-type {
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    padding-bottom: 15px;
+}
+.order-details-wrapper strong {
+    color: #0c90ff; /* Выделение стоимости */
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* Кнопка "видалити замовлення" */
+.order-details-wrapper form button {
+    /* Используем стили .btn.btn-primary из login.css, но делаем их красными для удаления */
+    /* Внимание: для красного стиля требуется добавить дополнительный CSS для кнопки */
+    /* Здесь я просто делаю её немного отличающейся */
+    border: 0;
+    color: #ffffff; /* Белый текст */
+    background: linear-gradient(180deg, #ff8c8c 0%, #ff6666 50%, #cc0000 100%); /* Красный градиент */
+    border-radius: 999px;
+    padding: 12px 18px;
+    box-shadow: 0 10px 20px rgba(255,0,0,.35), inset 0 1px 0 rgba(255,255,255,.85);
+    position: relative;
+    transition: transform .08s ease, filter .2s ease, box-shadow .2s ease;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 20px;
+    display: block; /* Растягиваем кнопку на всю ширину формы */
+    width: 100%;
+}
+.order-details-wrapper form button:hover {
+    filter: saturate(1.1) brightness(1.02);
+}
+.order-details-wrapper form button:active {
+    transform: translateY(1px) scale(.995);
+}
+/* --- ОБНОВЛЕННЫЙ CSS (styles.css) --- */

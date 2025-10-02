@@ -1,58 +1,99 @@
-body {
-    background-color: aqua;
+/* ================================================= */
+/* Обновленные стили для страницы меню */
+/* ================================================= */
 
-}
+/* 1. Глобальный фон (Если этот блок переопределяет ваш основной body) */
 
+/* 2. Контейнер сетки */
 .container-menu-card {
     display: flex;
-    flex-wrap: wrap;   /* щоб переносились вниз */
-    gap: 20px;         /* відстань між карточками */
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 30px; /* Немного увеличен отступ между карточками */
+    justify-content: center; /* Центрируем карточки в контейнере */
+    padding: 30px; /* Внутренний отступ контейнера */
+    max-width: 1200px; /* Ограничиваем максимальную ширину для лучшего вида */
+    margin: 0 auto; /* Центрируем сам контейнер */
 }
+
+/* 3. КАРТОЧКА ТОВАРА (Стиль Aero Glass) */
 .menu-item-card {
-    background-color: aliceblue;
-    width: 200px;
+    /* Стили Aero Glass */
+    background: linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.78) 100%);
+    border: 1px solid rgba(255,255,255,.55);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 10px 30px rgba(0,55,100,.15), inset 0 1px 0 rgba(255,255,255,.5);
+    
+    width: 220px; /* Немного шире для лучшего вида */
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 10px 20px 40px gray;
-    margin: 50px;
+    
+    /* Очистка от лишних отступов и установка вертикального Flex */
+    margin: 0; /* Удаляем неэффективный margin: 50px; */
     display: flex;
     flex-direction: column;
-
+    text-align: center; /* Центрируем текст внутри карточки */
 }
 
-h2 {
-    margin-top: 20px;
-    font-size: 20px;
-    
-
-}
-
+/* 4. Заголовок страницы (H1) */
 h1 {
     text-align: center;
+    /* Используем фирменный стиль */
+    color: #1e566a; 
+    font-weight: 700;
+    text-shadow: 0 1px 0 rgba(255,255,255,.85);
+    margin: 50px 0 30px 0;
 }
 
+/* 5. Название блюда (H2) */
+h2 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.3rem; /* Чуть больше */
+    color: #0f2b3a; 
+    font-weight: 600;
+    text-shadow: 0 1px 0 rgba(255,255,255,.85);
+    min-height: 40px; /* Чтобы все названия были на одной линии */
+}
+
+/* 6. Цена/Описание (P) */
 p {
-    margin-top: 20px;
-    font-size: 15px; 
-
+    margin-top: 10px;
+    font-size: 1.1rem; /* Чуть больше для читаемости */
+    color: #0d232f; /* Улучшенный контраст */
+    flex-grow: 1; /* Чтобы цена была внизу, а текст растягивался */
 }
+
+/* 7. Изображение */
 .menu-item-card-image {
     border-radius: 11px;
-
-    
+    max-width: 100%;
+    height: auto;
+    display: block; /* Убеждаемся, что это блочный элемент */
+    margin: 0 auto;
 }
 
+/* 8. Контейнер ссылки */
 .menu-item-card-link-keeper {
-    margin-top: 20px;
+    margin-top: 25px; /* Большой отступ сверху, чтобы отделить от цены */
     text-align: center;
-
+    text-decoration: none;
 }
 
+/* 9. КНОПКА (Стиль Aero Button) */
 .menu-item-card-link {
-    background-color: blue;
-    padding: 7px 12px;
-    color: white;
-    border-radius: 20px;
-
+    /* Стили фирменной кнопки из login.css */
+    background: linear-gradient(180deg, #ffffff 0%, #d9f7ff 12%, #9ae8ff 50%, #3fc9ff 50.5%, #1fb1ff 78%, #0fa3ff 100%);
+    padding: 10px 20px; /* Увеличен отступ */
+    color: #0f2b3a; /* Текст синий/темный */
+    font-weight: 700;
+    border-radius: 999px; /* Скругленные углы */
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(0,136,230,.35), inset 0 1px 0 rgba(255,255,255,.85);
+    transition: transform .08s ease, box-shadow .2s ease;
+    display: inline-block;
+}
+.menu-item-card-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(0,136,230,.45), inset 0 1px 0 rgba(255,255,255,.9);
 }

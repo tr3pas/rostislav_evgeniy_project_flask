@@ -2,25 +2,41 @@
 
 
 {% block title %}{{ title }}{% endblock title %}
-
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/basket.css') }}">{% endblock styles %}
 {% block content %}
 
     <h1>Your Basket</h1>
     {% if not basket %}
         <p>Your basket is empty.</p>
     {% else %}
-        <ul>
-            {% for item, quantity in basket.items() %}
-                <li>{{ item }} - Quantity: {{ quantity }}</li>
-            {% endfor %}
-        </ul>
-        <form method="post" action="{{ url_for('orders.create_order') }}">
-            <button type="submit">оформити замовлення</button>
-        </form>
+    {{ basket }}
+    <table>
+    <thead>
+        <tr>
+            <th>ID/Назва страви</th>    
+            <th>Кількість</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item, quantity in basket.items() %}
+        <tr>
+            <td>{{ item }}</td>
+            <td>{{ quantity }}</td>
+            <td>
+                <form method="post" action="{{ url_for('orders.create_order') }}">
+                    <button type="submit" class="btn btn-primary">Oформити замовлення</button>
+                </form>
 
-        <form method="post" action="{{ url_for('orders.clear_basket') }}">
-            <button type="submit">Очистити кошик</button>
-        </form>
+                <form method="post" action="{{ url_for('orders.clear_basket') }}">
+                    <button type="submit" class="btn btn-primary">Очистити кошик</button>
+                </form>            
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
     {% endif %}
 
 

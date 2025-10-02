@@ -2,10 +2,11 @@
 
 
 {% block title %}{{ title }}{% endblock title %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/orders_details.css') }}">{% endblock styles %}
 
 {% block content %}
-
-    <h1>ваше замовлення №{{ order.id }}</h1>
+<div class="order-details-wrapper">
+    <h1>Ваше замовлення №{{ order.id }}</h1>
     <ul>
         {% for item in order.order_items %}
             <li>{{ item.menu.name }} - Кількість: {{ item.quantity }}</li>
@@ -21,5 +22,5 @@
         <button type="submit">видалити замовлення</button>
     </form>
 
-
+</div>
 {% endblock content %}
