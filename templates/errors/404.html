@@ -2,7 +2,7 @@
 
 
 {% block title %}404{% endblock title %}
-
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/404.css') }}">{% endblock styles %}
 {% block content %}
 
 <main class="card" role="main" aria-labelledby="title">
